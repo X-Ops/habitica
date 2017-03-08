@@ -25,24 +25,47 @@
   .col-9
     h2(v-once) {{ $t('publicGuilds') }}
     public-guild-item(v-for="guild in guilds", :key='guild._id', :guild="guild")
+    mugen-scroll(:handler="fetchGuilds", :should-handle="!loading", :handle-on-mount="true")
+      span loading...
 </template>
 
 <script>
-import { mapState, mapActions } from '../../../../store';
+import MugenScroll from 'vue-mugen-scroll';
+import { mapState } from '../../../../store';
 import PublicGuildItem from './publicGuildItem';
 
 export default {
-  components: { PublicGuildItem },
+  components: { PublicGuildItem, MugenScroll },
+  data () {
+    return {
+      loading: false,
+      lastPageLoaded: 0,
+      guilds: [],
+    };
+  },
   computed: {
     ...mapState(['guilds']),
   },
   methods: {
-    ...mapActions({
-      fetchGuilds: 'guilds:fetchAll',
-    }),
-  },
-  created () {
-    if (!this.guilds) this.fetchGuilds();
+    fetchGuilds () {
+      setTimeout(() => {
+        this.loading = true;
+
+        let res = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map(() => {
+          return {
+            _id: Date.now(),
+            name: Date.now(),
+            description: 'aaaa',
+            members: Math.random(),
+          };
+        });
+        console.log(res);
+
+        this.guilds.push(...res);
+        this.lastPageLoaded++;
+        this.loading = false;
+      }, 250);
+    },
   },
 };
 </script>

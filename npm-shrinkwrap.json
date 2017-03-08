@@ -7386,6 +7386,11 @@
       "from": "lodash.templatesettings@>=3.0.0 <4.0.0",
       "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-3.1.1.tgz"
     },
+    "lodash.throttle": {
+      "version": "4.1.1",
+      "from": "lodash.throttle@>=4.1.1 <5.0.0",
+      "resolved": "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
+    },
     "lodash.uniq": {
       "version": "4.5.0",
       "from": "lodash.uniq@>=4.3.0 <5.0.0",
@@ -12149,6 +12154,11 @@
           "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-4.0.2.tgz"
         }
       }
+    },
+    "vue-mugen-scroll": {
+      "version": "0.2.1",
+      "from": "vue-mugen-scroll@latest",
+      "resolved": "https://registry.npmjs.org/vue-mugen-scroll/-/vue-mugen-scroll-0.2.1.tgz"
     },
     "vue-router": {
       "version": "2.3.0",
