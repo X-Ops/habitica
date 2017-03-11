@@ -41,7 +41,7 @@ function t (stringName) {
     try {
       return template(string)(clonedVars);
     } catch (_error) {
-      return 'Error processing the string. Please see Help > Report a Bug.';
+      return `Error processing the string "${stringName}". Please see Help > Report a Bug.`;
     }
   } else {
     let stringNotFound;
