@@ -51,7 +51,7 @@ export default {
       setTimeout(() => {
         this.loading = true;
 
-        let res = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map(() => {
+        /* let res = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map(() => {
           return {
             _id: Date.now(),
             name: Date.now(),
@@ -63,7 +63,7 @@ export default {
 
         this.guilds.push(...res);
         this.lastPageLoaded++;
-        this.loading = false;
+        this.loading = false;*/
       }, 250);
     },
   },

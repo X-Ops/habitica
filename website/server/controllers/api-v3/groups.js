@@ -25,7 +25,7 @@ import payments from '../../libs/payments';
 import stripePayments from '../../libs/stripePayments';
 import amzLib from '../../libs/amazonPayments';
 import shared from '../../../common';
-
+import apiMessages from '../../libs/apiMessages';
 
 /**
  * @apiDefine GroupBodyInvalid
@@ -277,8 +277,8 @@ api.getGroups = {
 
     req.checkQuery('type', res.t('groupTypesRequired')).notEmpty();
     // pagination options, can only be used with public guilds
-    req.checkQuery('paginate').optional().isIn(['true', 'false'], 'req.query.paginate must be a boolean string.');
-    req.checkQuery('page').optional().isInt({min: 0}, 'req.query.page must be an integer greater than or equal to 0.');
+    req.checkQuery('paginate').optional().isIn(['true', 'false'], apiMessages('guildsPaginateBooleanString'));
+    req.checkQuery('page').optional().isInt({min: 0}, apiMessages('guildsPageInteger'));
 
     let validationErrors = req.validationErrors();
     if (validationErrors) throw validationErrors;
@@ -287,7 +287,7 @@ api.getGroups = {
 
     let paginate = req.query.paginate === 'true' ? true : false;
     if (paginate && !_.includes(types, 'publicGuilds')) {
-      throw new BadRequest('Only public guilds support pagination.');
+      throw new BadRequest(apiMessages('guildsOnlyPaginate'));
     }
 
     let groupFields = basicGroupFields.concat(' description memberCount balance');

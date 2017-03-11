@@ -7,6 +7,7 @@ import {
 import {
   TAVERN_ID,
 } from '../../../../../website/server/models/group';
+import apiMessages from '../../../../../website/server/libs/apiMessages';
 
 describe('GET /groups', () => {
   let user;
@@ -99,7 +100,7 @@ describe('GET /groups', () => {
       .to.eventually.have.a.lengthOf(NUMBER_OF_PUBLIC_GUILDS);
   });
 
-  describe.only('public guilds pagination', () => {
+  describe('public guilds pagination', () => {
     it('req.query.paginate must be a boolean string', async () => {
       await expect(user.get('/groups?paginate=aString&type=publicGuilds'))
         .to.eventually.be.rejected.and.eql({
@@ -114,7 +115,7 @@ describe('GET /groups', () => {
         .to.eventually.be.rejected.and.eql({
           code: 400,
           error: 'BadRequest',
-          message: t('guildsPaginateBoolean'),
+          message: apiMessages('guildsOnlyPaginate'),
         });
     });
 
