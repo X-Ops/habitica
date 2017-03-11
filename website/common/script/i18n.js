@@ -57,7 +57,7 @@ function t (stringName) {
         string: stringName,
       });
     } catch (_error) {
-      return 'Error processing the string. Please see Help > Report a Bug.';
+      return 'Error processing the string "stringNotFound". Please see Help > Report a Bug.';
     }
   }
 }
